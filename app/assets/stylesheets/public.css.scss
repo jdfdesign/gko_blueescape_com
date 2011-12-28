@@ -1,0 +1,239 @@
+/*
+*= require_self
+******/
+
+/*-------------------------------------------------- 
+   Table of Contents
+-----------------------------------------------------
+:: Shared Styles
+:: Page Name 1
+:: Page Name 2
+*/
+@import "variables";
+@import "gko/core";
+@import "gko/elastislide";
+@import "gko/orbit";
+/*-----------------------------------------
+   Shared Styles
+----------------------------------------- */ 
+.uppercase_font_style {
+	line-height: 24px;
+	font-size: 13px;
+	letter-spacing: 1px; 
+	text-transform: uppercase; 
+}
+/* Not compatible with dropdown */
+.menu_vertical {
+	overflow: hidden;
+	clear:both;
+	float: none;
+	text-align: left;
+	ul.menu {
+		float: left;
+		position: relative;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		overflow: visible;
+		a { line-height: 4px; }
+		li.first-level {
+			clear: both;
+			float: left;
+			display: block;
+			margin: 0;
+			&:first-child { 
+				padding-left: 0;
+				background: none; }
+		}
+	}
+}
+/* Not compatible with dropdown */
+.menu_center {
+	overflow: hidden;
+	clear:both;
+	float: none;
+	text-align: center;
+	ul.menu {
+		float: left;
+		position: relative;
+		left: 50%;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		overflow: visible;
+		@extend .uppercase_font_style; 
+		li.first-level {
+			float: left;
+			position: relative;
+			right: 50%;
+			display: block;
+			margin: 0;
+			padding: 0 0 0 48px;
+			&:first-child { 
+				padding-left: 0;
+				background: none; }
+		}
+	}
+}
+h1 {
+font-size: 26px;
+font-size: 2.6rem;
+}
+/*-----------------------------------------
+   Structure
+----------------------------------------- */
+	
+.wrapper-wide {
+ @include container; 
+}
+.wrapper-content {
+ @include row; 
+}
+#main-content{
+ @include column(12);
+	margin-top:34px;
+}
+#main-content.sidebar {
+ @include column(8);
+}
+#sidebar{ 
+ @include column(4); 
+}
+#wrapper-wide-main {
+ 
+}
+#wrapper-wide-footer {
+	margin: 60px 0 0 0;
+	padding: 15px 0 40px 0;
+	width: 100%;
+	text-align: center;
+	font-size: 12px;
+}
+#wrapper-wide-header {
+	border-top: 8px solid black;
+	
+}
+
+/*-----------------------------------------
+   Header
+----------------------------------------- */
+#header {
+background: $altColor;
+} 
+#masterhead {
+	float:right;
+	background-color: black;
+	padding:4px; 
+	
+}
+#site-title-container {
+	float: left;
+	position:relative;
+	margin: 20px 0 20px 20px;
+	@media only screen and (max-width: 767px) {
+		float: none !important; 
+	}  
+}
+h2#site-title {
+	@include logo(220px, 108px);
+	float: none;
+	margin: 0 auto !important;
+	
+}
+#primary-menu {
+	clear: none !important;
+	margin: 20px 0 20px 0;
+	padding: 8px 0 9px 0;
+	float: right;
+	position:relative;
+  @extend .menu_vertical; 
+	ul.menu {
+		@extend .uppercase_font_style;
+		display:block;
+		font-weight: bold;
+		color: white;
+		li { width: 100%; border-top: 1px solid white;}
+		a { padding: 10px 10px 10px 0;}    
+	}
+	
+	@media only screen and (max-width: 767px) {
+		padding: 0;
+		margin: 0; 
+		width:100%;
+		float: left; 
+		ul.menu {
+			width:100%;
+			text-align: center;
+			a { padding: 10px 20px 10px 20px;}
+		}
+	}
+}
+
+.html_text {
+	font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	@media only screen and (max-width: 767px) {
+		padding: 0;
+	}
+}
+/*-----------------------------------------
+   Footer
+----------------------------------------- */ 
+#footer {
+	border-top: 1px solid #1e1e1e;
+	padding-top:12px;
+	h3 {
+		@extend .uppercase_font_style;
+	}
+}
+#pipe-menu {
+	@extend .menu_center;
+	ul.menu {
+		@extend .uppercase_font_style;
+		text-transform: capitalize;
+		font-style: italic;
+		letter-spacing: 0px;
+	}
+}
+.site_infos {
+ @include row;    
+}
+#site_by {
+ background: transparent asset-url("gko-core/logo_gecko_white.png", image) no-repeat scroll 0 1px; 
+}
+/*-----------------------------------------
+   Home
+----------------------------------------- */
+body#home {
+	.row.features {
+		margin-bottom: 34px;
+		background: white;
+	}
+
+	#featured {
+		
+		.infos {
+			background: rgba(15, 171, 222, 0.7);
+			position:absolute;
+			bottom: 0;
+			left: 100px;
+			right: 100px;
+			padding: 12px;
+			h1 { 
+				font-size: 22px;
+				color:white;
+			}
+			h3 { 
+				font-size: 16px;
+				color:white;
+			}  
+		}
+	}
+	.row.services {
+		margin-top: 14px;
+		h3 { color:$altColor;}
+	} 
+} 
+.orbit-bullets li {
+background: url(/assets/foundation/orbit/bullets_wonb.jpg) no-repeat 4px 0;
+}
+

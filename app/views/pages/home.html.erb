@@ -1,0 +1,26 @@
+<% 
+@services = @site.services.with_translations(I18n.locale)
+%>
+
+<% content_for :page_content do %>
+  <div class="row features">
+    <div class="twelve-columns">
+      <%= render 'shared/features', :features => @site.features %>
+    </div>
+  </div> 
+      <% @services.in_groups_of(3) do |services| %>
+        <div class="row services">
+        <% services.each do |record| %>
+        <% if record %>
+          <div class="four-column" id="<%= dom_id(record) %>">
+              <%= render_record_thumb(record) %>
+              <div class="entry-infos">
+                <h3><%= record.title %></h3>
+                <%= record.body.html_safe if record.body.present? %>
+              </div> 
+          </div>
+        <% end %>
+        <% end %>
+        </div>  
+      <% end %> 
+<% end %>
