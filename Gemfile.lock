@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:jdfdesign/gko-cms-31.git
-  revision: 36086d4624bd8c2101a2d978297a7b70692d9741
+  revision: f239eae827b8b6b8e88d23aeda3a340e43fb2101
   specs:
     gko-blog (0.0.24)
       gko-core
@@ -21,14 +21,14 @@ GIT
 
 GIT
   remote: git@github.com:jdfdesign/gko-cms-31.git
-  revision: 36086d4624bd8c2101a2d978297a7b70692d9741
+  revision: f239eae827b8b6b8e88d23aeda3a340e43fb2101
   specs:
-    gko-features (0.0.2)
+    gko-features (0.0.3)
       gko-core
 
 GIT
   remote: git@github.com:jdfdesign/gko-cms-31.git
-  revision: 36086d4624bd8c2101a2d978297a7b70692d9741
+  revision: f239eae827b8b6b8e88d23aeda3a340e43fb2101
   specs:
     gko-core (0.0.81)
       activesupport-slices (= 0.0.2)
@@ -62,7 +62,7 @@ GIT
 
 GIT
   remote: git@github.com:jdfdesign/gko-cms-31.git
-  revision: 36086d4624bd8c2101a2d978297a7b70692d9741
+  revision: f239eae827b8b6b8e88d23aeda3a340e43fb2101
   specs:
     gko-auth (0.0.31)
       cancan (= 1.6.5)
@@ -249,7 +249,7 @@ DEPENDENCIES
   gko-blog!
   gko-categories!
   gko-core (= 0.0.81)!
-  gko-features (= 0.0.2)!
+  gko-features (= 0.0.3)!
   gko-images!
   gko-inquiry!
   gko-services!

@@ -16,7 +16,7 @@ group :production do
   gem "gko-images", :git => 'git@github.com:jdfdesign/gko-cms-31.git'
   gem "gko-inquiry", :git => 'git@github.com:jdfdesign/gko-cms-31.git'
   gem "gko-services", :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
-  gem "gko-features", '= 0.0.2', :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
+  gem "gko-features", '= 0.0.3', :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
   gem "gko-categories", :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
   gem "gko-sticker", :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
   gem "gko-blog", :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
