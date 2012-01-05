@@ -11,15 +11,15 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 group :production do
-  gem "gko-core", '= 0.0.81', :git => 'git@github.com:jdfdesign/gko-cms-31.git'
-  gem "gko-auth", '= 0.0.31', :git => 'git@github.com:jdfdesign/gko-cms-31.git'
-  gem "gko-images", :git => 'git@github.com:jdfdesign/gko-cms-31.git'
-  gem "gko-inquiry", :git => 'git@github.com:jdfdesign/gko-cms-31.git'
-  gem "gko-services", :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
+  gem "gko-core", '= 0.0.85', :git => 'git@github.com:jdfdesign/gko-cms-31.git'
+  gem "gko-auth", '= 0.0.32', :git => 'git@github.com:jdfdesign/gko-cms-31.git'
+  gem "gko-images", '= 0.0.45', :git => 'git@github.com:jdfdesign/gko-cms-31.git'
+  gem "gko-inquiry", '= 0.0.33', :git => 'git@github.com:jdfdesign/gko-cms-31.git'
+  gem "gko-services", '= 0.0.1', :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
   gem "gko-features", '= 0.0.3', :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
-  gem "gko-categories", :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
-  gem "gko-sticker", :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
-  gem "gko-blog", :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
+  gem "gko-categories", '= 0.0.23', :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
+  gem "gko-sticker", '= 0.0.23', :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
+  gem "gko-blog", '= 0.0.24', :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
 end
 #group :development do
 #  gem "gko-core", :path => File.expand_path('../../gko_cms_html/gko_core', __FILE__)

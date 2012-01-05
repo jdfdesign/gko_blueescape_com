@@ -1,36 +1,38 @@
 GIT
   remote: git@github.com:jdfdesign/gko-cms-31.git
-  revision: f239eae827b8b6b8e88d23aeda3a340e43fb2101
+  revision: 206f5a2ffc28110e51b26fc2d9f577f1e0c43165
   specs:
     gko-blog (0.0.24)
       gko-core
+
+GIT
+  remote: git@github.com:jdfdesign/gko-cms-31.git
+  revision: 206f5a2ffc28110e51b26fc2d9f577f1e0c43165
+  specs:
     gko-categories (0.0.23)
-      gko-core
-    gko-images (0.0.43)
-      dragonfly (~> 0.9.8)
-      gko-core
-      mime-types
-      rack-cache (>= 0.5.3)
-    gko-inquiry (0.0.32)
-      filters_spam (~> 0.2)
-      gko-core
-    gko-services (0.0.1)
       gko-core
     gko-sticker (0.0.23)
       gko-core
 
 GIT
   remote: git@github.com:jdfdesign/gko-cms-31.git
-  revision: f239eae827b8b6b8e88d23aeda3a340e43fb2101
+  revision: 206f5a2ffc28110e51b26fc2d9f577f1e0c43165
   specs:
     gko-features (0.0.3)
       gko-core
 
 GIT
   remote: git@github.com:jdfdesign/gko-cms-31.git
-  revision: f239eae827b8b6b8e88d23aeda3a340e43fb2101
+  revision: 206f5a2ffc28110e51b26fc2d9f577f1e0c43165
   specs:
-    gko-core (0.0.81)
+    gko-services (0.0.1)
+      gko-core
+
+GIT
+  remote: git@github.com:jdfdesign/gko-cms-31.git
+  revision: 206f5a2ffc28110e51b26fc2d9f577f1e0c43165
+  specs:
+    gko-core (0.0.85)
       activesupport-slices (= 0.0.2)
       acts_as_indexed (~> 0.7.6)
       bundler (= 1.1.pre.4)
@@ -62,11 +64,29 @@ GIT
 
 GIT
   remote: git@github.com:jdfdesign/gko-cms-31.git
-  revision: f239eae827b8b6b8e88d23aeda3a340e43fb2101
+  revision: 206f5a2ffc28110e51b26fc2d9f577f1e0c43165
   specs:
-    gko-auth (0.0.31)
+    gko-images (0.0.45)
+      dragonfly (~> 0.9.8)
+      gko-core
+      mime-types
+      rack-cache (>= 0.5.3)
+
+GIT
+  remote: git@github.com:jdfdesign/gko-cms-31.git
+  revision: 206f5a2ffc28110e51b26fc2d9f577f1e0c43165
+  specs:
+    gko-auth (0.0.32)
       cancan (= 1.6.5)
       devise (= 1.5.1)
+      gko-core
+
+GIT
+  remote: git@github.com:jdfdesign/gko-cms-31.git
+  revision: 206f5a2ffc28110e51b26fc2d9f577f1e0c43165
+  specs:
+    gko-inquiry (0.0.33)
+      filters_spam (~> 0.2)
       gko-core
 
 GEM
@@ -172,7 +192,7 @@ GEM
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
-    net-ssh (2.2.1)
+    net-ssh (2.2.2)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     orm_adapter (0.0.5)
@@ -245,15 +265,15 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.1.1)
-  gko-auth (= 0.0.31)!
-  gko-blog!
-  gko-categories!
-  gko-core (= 0.0.81)!
+  gko-auth (= 0.0.32)!
+  gko-blog (= 0.0.24)!
+  gko-categories (= 0.0.23)!
+  gko-core (= 0.0.85)!
   gko-features (= 0.0.3)!
-  gko-images!
-  gko-inquiry!
-  gko-services!
-  gko-sticker!
+  gko-images (= 0.0.45)!
+  gko-inquiry (= 0.0.33)!
+  gko-services (= 0.0.1)!
+  gko-sticker (= 0.0.23)!
   iconv
   sass-rails (~> 3.1.5.rc1)
   uglifier (>= 1.0.3)
