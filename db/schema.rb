@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111228164445) do
+ActiveRecord::Schema.define(:version => 20120123083643) do
 
   create_table "accounts", :force => true do |t|
     t.string   "reference",  :limit => 40
@@ -58,16 +58,27 @@ ActiveRecord::Schema.define(:version => 20111228164445) do
     t.string   "locale"
     t.string   "path"
     t.string   "meta_title"
-    t.text     "body"
+    t.string   "slug"
     t.text     "meta_description"
     t.string   "title"
     t.text     "meta_keywords"
-    t.string   "slug"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "category_translations", ["category_id"], :name => "index_category_translations_on_category_id"
+  add_index "category_translations", ["locale"], :name => "index_category_translations_on_locale"
+
+  create_table "configurations", :force => true do |t|
+    t.integer  "site_id"
+    t.string   "name"
+    t.string   "type",       :limit => 50
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "configurations", ["site_id", "name", "type"], :name => "index_configurations_on_site_id_and_name_and_type"
 
   create_table "content_translations", :force => true do |t|
     t.integer  "content_id"
@@ -75,14 +86,15 @@ ActiveRecord::Schema.define(:version => 20111228164445) do
     t.string   "meta_title"
     t.string   "slug"
     t.text     "meta_description"
+    t.string   "title"
     t.text     "meta_keywords"
     t.text     "body"
-    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "content_translations", ["content_id"], :name => "index_content_translations_on_content_id"
+  add_index "content_translations", ["locale"], :name => "index_content_translations_on_locale"
 
   create_table "contents", :force => true do |t|
     t.integer  "site_id"
@@ -124,13 +136,14 @@ ActiveRecord::Schema.define(:version => 20111228164445) do
   create_table "feature_translations", :force => true do |t|
     t.integer  "feature_id"
     t.string   "locale"
-    t.text     "body"
     t.string   "title"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "feature_translations", ["feature_id"], :name => "index_feature_translations_on_feature_id"
+  add_index "feature_translations", ["locale"], :name => "index_feature_translations_on_locale"
 
   create_table "features", :force => true do |t|
     t.integer  "site_id"
@@ -208,13 +221,14 @@ ActiveRecord::Schema.define(:version => 20111228164445) do
   create_table "image_translations", :force => true do |t|
     t.integer  "image_id"
     t.string   "locale"
-    t.string   "alt"
     t.string   "title"
+    t.string   "alt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "image_translations", ["image_id"], :name => "index_image_translations_on_image_id"
+  add_index "image_translations", ["locale"], :name => "index_image_translations_on_locale"
 
   create_table "images", :force => true do |t|
     t.string   "title",                   :limit => 100
@@ -281,18 +295,47 @@ ActiveRecord::Schema.define(:version => 20111228164445) do
 
   add_index "mail_methods", ["site_id"], :name => "index_mail_methods_on_site_id"
 
-  create_table "preferences", :force => true do |t|
-    t.string   "name",       :limit => 100, :null => false
-    t.integer  "owner_id",                  :null => false
-    t.string   "owner_type", :limit => 50,  :null => false
-    t.integer  "group_id"
-    t.string   "group_type", :limit => 50
-    t.text     "value"
+  create_table "partner_translations", :force => true do |t|
+    t.integer  "partner_id"
+    t.string   "locale"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "preferences", ["owner_id", "owner_type", "name", "group_id", "group_type"], :name => "ix_prefs_on_owner_attr_pref", :unique => true
+  add_index "partner_translations", ["locale"], :name => "index_partner_translations_on_locale"
+  add_index "partner_translations", ["partner_id"], :name => "index_partner_translations_on_partner_id"
+
+  create_table "partners", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "url"
+    t.integer  "site_id"
+    t.integer  "section_id"
+    t.string   "image_mime_type"
+    t.string   "image_name"
+    t.integer  "image_size"
+    t.integer  "image_width"
+    t.integer  "image_height"
+    t.string   "image_uid"
+    t.string   "image_ext"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "globalized",      :default => 0
+  end
+
+  add_index "partners", ["section_id"], :name => "index_partners_on_section_id"
+  add_index "partners", ["site_id"], :name => "index_partners_on_site_id"
+
+  create_table "preferences", :force => true do |t|
+    t.string   "key",                      :null => false
+    t.string   "value_type", :limit => 50
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "preferences", ["key"], :name => "index_preferences_on_key", :unique => true
 
   create_table "roles", :force => true do |t|
     t.string "name"
@@ -309,20 +352,21 @@ ActiveRecord::Schema.define(:version => 20111228164445) do
   create_table "section_translations", :force => true do |t|
     t.integer  "section_id"
     t.string   "locale"
-    t.string   "menu_title"
     t.string   "path"
+    t.string   "menu_title"
     t.string   "meta_title"
+    t.string   "redirect_url"
     t.string   "slug"
     t.text     "meta_description"
+    t.string   "title"
     t.text     "meta_keywords"
     t.text     "body"
-    t.string   "title"
     t.string   "title_addon"
-    t.string   "redirect_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "section_translations", ["locale"], :name => "index_section_translations_on_locale"
   add_index "section_translations", ["section_id"], :name => "index_section_translations_on_section_id"
 
   create_table "sections", :force => true do |t|
@@ -384,13 +428,14 @@ ActiveRecord::Schema.define(:version => 20111228164445) do
   create_table "site_translations", :force => true do |t|
     t.integer  "site_id"
     t.string   "locale"
+    t.string   "subtitle"
     t.string   "meta_title"
     t.string   "title"
-    t.string   "subtitle"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "site_translations", ["locale"], :name => "index_site_translations_on_locale"
   add_index "site_translations", ["site_id"], :name => "index_site_translations_on_site_id"
 
   create_table "sites", :force => true do |t|
@@ -405,9 +450,9 @@ ActiveRecord::Schema.define(:version => 20111228164445) do
     t.text     "options"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "site_registrations_count",               :default => 0
     t.integer  "globalized",                             :default => 0
     t.text     "plugins"
+    t.integer  "site_registrations_count",               :default => 0
   end
 
   add_index "sites", ["account_id"], :name => "index_sites_on_account_id"
@@ -429,6 +474,7 @@ ActiveRecord::Schema.define(:version => 20111228164445) do
     t.datetime "updated_at"
   end
 
+  add_index "sticker_translations", ["locale"], :name => "index_sticker_translations_on_locale"
   add_index "sticker_translations", ["sticker_id"], :name => "index_sticker_translations_on_sticker_id"
 
   create_table "stickers", :force => true do |t|
@@ -454,6 +500,14 @@ ActiveRecord::Schema.define(:version => 20111228164445) do
   add_index "stickings", ["stickable_id", "stickable_type"], :name => "index_stickings_on_stickable_id_and_stickable_type"
   add_index "stickings", ["sticker_id"], :name => "index_stickings_on_sticker_id"
 
+  create_table "supports", :force => true do |t|
+    t.integer "owner_id"
+    t.string  "owner_type"
+    t.text    "infos"
+  end
+
+  add_index "supports", ["owner_id", "owner_type"], :name => "index_supports_on_owner_id_and_owner_type", :unique => true
+
   create_table "tokenized_permissions", :force => true do |t|
     t.integer  "permissable_id"
     t.string   "permissable_type"
@@ -473,20 +527,20 @@ ActiveRecord::Schema.define(:version => 20111228164445) do
     t.datetime "confirmation_sent_at"
     t.string   "reset_password_token"
     t.string   "remember_token"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                           :default => 0
+    t.string   "remember_created_at"
+    t.integer  "sign_in_count"
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "username",                 :limit => 60
     t.string   "firstname",                :limit => 60
     t.string   "lastname",                 :limit => 60
     t.string   "preferred_language",       :limit => 5
     t.string   "timezone"
     t.integer  "site_registrations_count",                :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "password_salt"
     t.string   "persistence_token"
     t.string   "perishable_token"

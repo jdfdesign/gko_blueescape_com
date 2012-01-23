@@ -9,10 +9,21 @@
 :: Page Name 1
 :: Page Name 2
 */
-@import "variables";
-@import "gko/core";
+$baseFontFamily: "proxima-nova-1", "proxima-nova-2", "Helvetica Neue", HelveticaNeue, Helvetica, Arial, "Lucida Grande", sans-serif; 
+$baseFontColor: #ccc;
+$baseColor: #ccc;
+$bodyBackground: #121212;
+$altColor: #0FABDE;//blue
+$linkColor: #ccc;
+$linkColorHover: #fff;
+
+
+$containerColor: #1f1f1f;
+$navBarHeight: 36px;
+
+@import "gko/gko_public_all";
 @import "gko/elastislide";
-@import "gko/orbit";
+
 /*-----------------------------------------
    Shared Styles
 ----------------------------------------- */ 
@@ -24,7 +35,7 @@
 }
 /* Not compatible with dropdown */
 .menu_vertical {
-	overflow: hidden;
+	//overflow: hidden;
 	clear:both;
 	float: none;
 	text-align: left;
@@ -80,7 +91,7 @@ font-size: 26px;
 font-size: 2.6rem;
 }
 /*-----------------------------------------
-   Structure
+   STRUCTURE
 ----------------------------------------- */
 	
 .wrapper-wide {
@@ -89,17 +100,18 @@ font-size: 2.6rem;
 }
 .wrapper-content {
  @include row;
- background: #1f1f1f; 
+ background: $containerColor; 
 }
 #main-content{
  @include column(12);
-	margin-top:34px;
+ margin-top:$baseLineHeight * 2;
 }
 #main-content.sidebar {
  @include column(8);
 }
 #sidebar{ 
- @include column(4); 
+ @include column(4);
+ margin-top:$baseLineHeight * 2; 
 }
 #wrapper-wide-main {
  
@@ -108,23 +120,29 @@ font-size: 2.6rem;
 	text-align: center;
 	font-size: 12px;
 }
-#wrapper-wide-header {
-	border-top: 8px solid black;
-	
+#masterhead {
+	background:$altColor;
+	border-top:6px solid $white;
+	.wrapper-content-inner {
+		float:right;
+		
+		background-color: $white;
+		padding:4px;
+		display: inline-block;
+		width:auto; 
+	}
 }
-
+ 
+ul#locales {
+	a { @include link-colors($altColor, $grayDark, $grayDark);}
+}
 /*-----------------------------------------
    Header
 ----------------------------------------- */
 #header {
-background: $altColor;
+	background: $altColor;
 } 
-#masterhead {
-	float:right;
-	background-color: black;
-	padding:4px; 
-	
-}
+
 #site-title-container {
 	float: left;
 	position:relative;
@@ -141,18 +159,19 @@ h2#site-title {
 }
 #primary-menu {
 	clear: none !important;
-	margin: 20px 60px 20px 0;
+	margin: 0 100px 0 0;
 	padding: 8px 0 9px 0;
 	float: right;
-	position:relative;
-  @extend .menu_vertical; 
-	ul.menu {
+	position:relative; 
+	.nav-bar {
+		@include vertical-nav-bar;
 		@extend .uppercase_font_style;
-		display:block;
-		font-weight: bold;
-		color: white;
-		li { width: 100%; border-top: 1px solid white;}
-		a { padding: 10px 10px 10px 0;}    
+		float: left;
+		margin-left: 8px;
+		a {
+			color: white;  
+			@include link-colors(white, $containerColor, $containerColor);
+		}   
 	}
 	
 	@media only screen and (max-width: 767px) {
@@ -163,7 +182,24 @@ h2#site-title {
 		ul.menu {
 			width:100%;
 			text-align: center;
-			a { padding: 10px 20px 10px 20px;}
+			li { 
+				border-top: 0px;
+				border-bottom: 1px solid white;
+				&:first-child {
+					border-top: 1px solid white;
+				}
+				&.active {
+					background: $containerColor;
+					color: $white;
+					> a {
+						@include link-colors($white, $white, $white);
+					}
+				}
+			}
+			a { 
+				padding: 10px 20px 10px 20px;
+				@include link-colors($white, $containerColor, $containerColor);
+			}
 		}
 	}
 }
@@ -199,17 +235,16 @@ h2#site-title {
  @include row;    
 }
 #site_by {
- background: transparent asset-url("gko-core/logo_gecko_white.png", image) no-repeat scroll 0 1px; 
+ background-image: asset-url("gko/logo_gecko_white.png", image); 
 }
 /*-----------------------------------------
    Home
 ----------------------------------------- */
 body#home {
-	.row.features {
-		padding-bottom: 34px;
-	}
-
-	#featured {
+	.row.featured {
+		.content {
+			height: 300px;
+		}
 		.infos {
 			background: #37bef0;
 			background-color: rgba(55, 190, 240, 0.7);
@@ -242,6 +277,6 @@ body#home {
 	} 
 } 
 .orbit-bullets li {
-background: url(/assets/foundation/orbit/bullets_wonb.jpg) no-repeat 4px 0;
+background: asset-url("foundation/orbit/bullets_wonb.jpg", image) no-repeat 4px 0;
 }
 

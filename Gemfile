@@ -11,25 +11,25 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 group :production do
-  gem "gko-core", '= 0.0.85', :git => 'git@github.com:jdfdesign/gko-cms-31.git'
-  gem "gko-auth", '= 0.0.32', :git => 'git@github.com:jdfdesign/gko-cms-31.git'
-  gem "gko-images", '= 0.0.45', :git => 'git@github.com:jdfdesign/gko-cms-31.git'
-  gem "gko-inquiry", '= 0.0.33', :git => 'git@github.com:jdfdesign/gko-cms-31.git'
-  gem "gko-services", '= 0.0.1', :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
-  gem "gko-features", '= 0.0.3', :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
-  gem "gko-categories", '= 0.0.23', :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
-  gem "gko-sticker", '= 0.0.23', :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
-  gem "gko-blog", '= 0.0.24', :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
+  gem 'gko_core', '= 0.1.02', :git => 'git@github.com:jdfdesign/gko-cms-31.git'
+  gem 'gko_auth', :git => 'git@github.com:jdfdesign/gko-cms-31.git'
+  gem 'gko_images', :git => 'git@github.com:jdfdesign/gko-cms-31.git'
+  gem 'gko_inquiries', :git => 'git@github.com:jdfdesign/gko-cms-31.git'
+  gem "gko_services", :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
+  gem "gko_features", :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
+  gem "gko_categories", :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
+  gem "gko_stickers", :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
+  gem "gko_blog", :git => 'git@github.com:jdfdesign/gko-cms-31.git' 
 end
 #group :development do
-#  gem "gko-core", :path => File.expand_path('../../gko_cms_html/gko_core', __FILE__)
-#  gem "gko-auth", :path => File.expand_path('../../gko_cms_html/gko_auth', __FILE__)
-#  gem "gko-images", :path => File.expand_path('../../gko_cms_html/gko_images', __FILE__)
-#  gem "gko-inquiry", :path => File.expand_path('../../gko_cms_html/gko_inquiry', __FILE__)
-#  gem "gko-services", :path => File.expand_path('../../gko_cms_html/gko-services', __FILE__)
-#  gem "gko-features", :path => File.expand_path('../../gko_cms_html/gko-features', __FILE__)
-#  gem "gko-categories", :path => File.expand_path('../../gko_cms_html/gko-categories', __FILE__)
-#  gem "gko-sticker", :path => File.expand_path('../../gko_cms_html/gko_sticker', __FILE__) 
-#  gem "gko-blog", :path => File.expand_path('../../gko_cms_html/gko-blog', __FILE__)
+#  gem "gko_core", :path => File.expand_path('../../gko_cms_html/gko_core', __FILE__)
+#  gem "gko_auth", :path => File.expand_path('../../gko_cms_html/gko_auth', __FILE__)
+#  gem "gko_images", :path => File.expand_path('../../gko_cms_html/gko_images', __FILE__)
+#  gem "gko_inquiries", :path => File.expand_path('../../gko_cms_html/gko_inquiries', __FILE__)
+#  gem "gko_services", :path => File.expand_path('../../gko_cms_html/gko_services', __FILE__)
+#  gem "gko_features", :path => File.expand_path('../../gko_cms_html/gko_features', __FILE__)
+#  gem "gko_categories", :path => File.expand_path('../../gko_cms_html/gko_categories', __FILE__)
+#  gem "gko_stickers", :path => File.expand_path('../../gko_cms_html/gko_stickers', __FILE__) 
+#  gem "gko_blog", :path => File.expand_path('../../gko_cms_html/gko_blog', __FILE__)
 #  gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git', :require =>   'rails_development_boost' 
 #end    

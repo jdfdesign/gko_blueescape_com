@@ -1,32 +1,38 @@
 <% 
 @services = @site.services.with_translations(I18n.locale)
+@features = @site.features.visibles
+
 %>
 
 <% content_for :page_content do %>
-  <div class="row features">
-    <div class="twelve-columns">
-      <%= render 'shared/features', :features => @site.features %>
+  <% if @features.any? %>
+  <div class="row featured">
+    <div class="twelve columns">
+      <%= render 'shared/features', :features => @features %>
     </div>
   </div>
-  <% @services.in_groups_of(3) do |services| %>
-    <div class="row services">
-      <div class='inner'>
-      <% services.each do |record| %>
-      <% if record %>
-        <div class="four-column" id="<%= dom_id(record) %>">
-            <%= render_record_thumb(record) %>
-            <div class="entry-infos">
-              <h3><%= record.title %></h3>
-              <div class="body"><%= record.body.html_safe if record.body.present? %></div>
-              <div class="details">
-                <%= "<span>#{t('services.price')}:</span> #{number_to_currency(record.price, :currency => "$", :precision => 2)}".html_safe if record.price.present? %>
-                <%= "<span>#{t('services.duration')}:</span> #{record.duration.to_s}".html_safe if record.duration.present? %>
-              </div> 
-            </div> 
-        </div>
-      <% end %>
-      <% end %>  
-      </div>
-    </div>  
   <% end %> 
+  <% if @services.any? %>
+    <% @services.in_groups_of(3) do |services| %>
+      <div class="row services">
+        <div class='inner'>
+        <% services.each do |record| %>
+          <% if record %>
+            <div class="four columns" id="<%= dom_id(record) %>">
+                <%= render_record_thumb(record) %>
+                <div class="entry-infos">
+                  <h3><%= record.title %></h3>
+                  <div class="body"><%= record.body.html_safe if record.body.present? %></div>
+                  <div class="details">
+                    <%= "<span>#{t('services.price')}:</span> #{record.price}".html_safe if record.price.present? %>
+                    <%= "<span>#{t('services.duration')}:</span> #{record.duration.to_s}".html_safe if record.duration.present? %>
+                  </div> 
+                </div> 
+            </div>
+          <% end %> 
+        <% end %>  
+        </div>
+      </div>  
+    <% end %>
+  <% end %>  
 <% end %>
