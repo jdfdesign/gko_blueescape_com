@@ -1,31 +1,19 @@
-/*
-*= require_self
-******/
-
-/*-------------------------------------------------- 
-   Table of Contents
------------------------------------------------------
-:: Shared Styles
-:: Page Name 1
-:: Page Name 2
-*/
+/* custom variables >>> */ 
+$altColor: #0FABDE; //blue
+$containerColor: #1f1f1f;   
+/* <<< custom variables */
 $baseFontFamily: "proxima-nova-1", "proxima-nova-2", "Helvetica Neue", HelveticaNeue, Helvetica, Arial, "Lucida Grande", sans-serif; 
-$baseFontColor: #ccc;
-$baseColor: #ccc;
-$bodyBackground: #121212;
-$altColor: #0FABDE;//blue
+$textColor: #ccc;
+$bodyBackgroundColor: #121212;
 $linkColor: #ccc;
 $linkColorHover: #fff;
 
-
-$containerColor: #1f1f1f;
-$navBarHeight: 36px;
-
-@import "gko/gko_public_all";
+@import "gko_public_all"; 
 @import "gko/elastislide";
+@import "zurb/foundation/orbit"; 
 
 /*-----------------------------------------
-   Shared Styles
+   SHARED STYLES 
 ----------------------------------------- */ 
 .uppercase_font_style {
 	line-height: 24px;
@@ -33,275 +21,205 @@ $navBarHeight: 36px;
 	letter-spacing: 1px; 
 	text-transform: uppercase; 
 }
-/* Not compatible with dropdown */
-.menu_vertical {
-	//overflow: hidden;
-	clear:both;
-	float: none;
-	text-align: left;
-	ul.menu {
-		float: left;
-		position: relative;
-		margin: 0;
-		padding: 0;
-		list-style: none;
-		overflow: visible;
-		a { line-height: 4px; }
-		li.first-level {
-			clear: both;
-			float: left;
-			display: block;
-			margin: 0;
-			&:first-child { 
-				padding-left: 0;
-				background: none; }
-		}
-	}
-}
-/* Not compatible with dropdown */
-.menu_center {
-	overflow: hidden;
-	clear:both;
-	float: none;
-	text-align: center;
-	.nav-bar {
-		float: left;
-		position: relative;
-		left: 50%;
-		margin: 0;
-		padding: 0;
-		list-style: none;
-		overflow: visible;
-		@extend .uppercase_font_style; 
-		li {
-			float: left;
-			position: relative;
-			right: 50%;
-			display: block;
-			margin: 0;
-			padding: 0 0 0 48px;
-			&:first-child { 
-				padding-left: 0;
-				background: none; }
-		}
-	}
+
+/*-----------------------------------------
+ TYPOGRAPHY 
+----------------------------------------- */
+h1,h2,h3 {
+ font-weight: normal;
 }
 h1 {
-font-size: 26px;
-font-size: 2.6rem;
+  font-size: $baseFontSize + 12;
+  line-height: $baseLineHeight * 2;
+  small {
+    font-size: $baseFontSize + 4;
+  }
+}
+h2 {
+  line-height: $baseLineHeight * 1.5;
+  font-size: $baseFontSize + 8;
+  small {
+    font-size: $baseFontSize + 1;
+  }
+}
+h3 {
+  line-height: $baseLineHeight * 1.5;
+  font-size: $baseFontSize + 4;
+  small {
+    font-size: $baseFontSize + 1;
+  }
+} 
+h4 {
+  line-height: $baseLineHeight;
+  font-size: $baseFontSize - 2;
+	@extend .uppercase_font_style;
+  small {
+    @extend .uppercase_font_style;
+  }
+} 
+
+/*-----------------------------------------
+   OVERWRITTE
+----------------------------------------- */
+.block-grid {
+	h2.entry-title { 
+		color:$altColor; 
+		font-size: 18px;
+		a {
+		 @include link-colors($altColor, $white, $white); 
+		}
+	}
+	.details {
+		span {
+			font-weight: bold;
+			color: $altColor;
+		}
+	}
+}
+
+.image-large-wrapper {
+	background: transparent;
 }
 /*-----------------------------------------
    STRUCTURE
------------------------------------------ */
-	
-.wrapper-wide {
- @include container;
- background: $bodyBackground; 
-}
-.wrapper-content {
- @include row;
- background: $containerColor; 
-}
-#main-content{
- @include column(12);
- margin-top:$baseLineHeight * 2;
-}
-.main-content-inner {
-	padding: 12px;
-}
-#main-content.sidebar {
- @include column(8);
+----------------------------------------- */ 
+#content {
+ background: $containerColor;
+ padding-top: $baseLineHeight;
+ padding-bottom: $baseLineHeight; 
 }
 #sidebar{ 
- @include column(4);
- margin-top:$baseLineHeight * 2; 
+ a {
+		@include link-colors($white, $altColor, $altColor);
+		&:hover {
+			text-decoration: none;
+		} 
+	} 
 }
-#wrapper-wide-main {
- 
-}
-#wrapper-wide-footer {
-	text-align: center;
-	font-size: 12px;
-}
-#masterhead {
-	background:$altColor;
-	border-top:6px solid $white;
-	.wrapper-content-inner {
-		float:right;
-		
-		background-color: $white;
-		padding:4px;
-		display: inline-block;
-		width:auto; 
+#footer-container {
+	.row-fluid {
+		background-color: #2b2b2b;
 	}
-}
- 
-ul#locales {
-	a { @include link-colors($altColor, $grayDark, $grayDark);}
+}	
+.main-column-inner,
+.footer-row-inner {
+	padding-left: 20px;
+	padding-right: 20px;
 }
 /*-----------------------------------------
-   Header
------------------------------------------ */
-#header {
-	background: $altColor;
+ HEADER
+----------------------------------------- */ 
+.navbar { 
+	margin-bottom: 0;
+	.row-fluid {
+		background-color: $altColor;
+	}
+	.header-top {
+		border-top:6px solid $white;
+		.nav {
+			font-size: 10px; 
+			a {
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				@include link-colors($altColor, $grayDark, $grayDark);
+			} 
+		} 
+	}
+	.header-nav {
+		position:relative;
+		nav { 
+			float: right;
+		}
+		.nav { 
+			@include vertical-nav; 
+			margin-top: 12px;
+			margin-left: 36px;
+		}
+		.nav > li > a {
+			font-size: 11px; 
+			text-transform: uppercase;
+			@extend .uppercase_font_style;  
+		}
+	}
 } 
-
-#site-title-container {
-	float: left;
-	position:relative;
-	margin: 20px 0 20px 20px;
-	@media only screen and (max-width: 767px) {
-		float: none !important; 
-	}  
-}
 h2#site-title {
 	@include logo(220px, 108px);
-	float: none;
-	margin: 0 auto !important;
-	
-}
-#primary-menu {
-	clear: none !important;
-	margin: 0 100px 0 0;
-	padding: 8px 0 9px 0;
-	float: right;
-	position:relative; 
-	.nav-bar {
-		@include vertical-nav-bar;
-		@extend .uppercase_font_style;
-		float: left;
-		margin-left: 8px;
-		li.active > a {
-			@include link-colors($containerColor, white, white);
-		}
-		a {
-			color: white;  
-			@include link-colors(white, $containerColor, $containerColor);
-		}   
-	}
-	
-	@media only screen and (max-width: 767px) {
-		@include clearfix;
-		position: static;
-		bottom: 0px;
-		right: 0px;
-		margin: 0px;
-		padding: 0px;
-		float: none;
-		display: block;
-		.nav-bar {
-			float: none;
-			margin: 0px;
-			> li { 
-				border-top: 1px solid #fff;
-				&.active > a {
-					background-color: #000;
-					@include link-colors(white, $altColor, $altColor);
-				}
-			}
-		}
-	}
+	float: left;
+	margin: 20px 0 20px 20px;
 }
 
-.html_text {
-	font-family: "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;
-	@media only screen and (max-width: 767px) {
-		padding: 0;
-	}
-}
 /*-----------------------------------------
-   Footer
+   FOOTER
 ----------------------------------------- */ 
-#footer { 
-	margin-top: 60px;
-	border-top: 1px solid #1e1e1e;
-	padding-top:12px;
-	background: transparent;
-	h3 {
-		@extend .uppercase_font_style;
-	}
-}
-#pipe-menu {
-	@extend .menu_center;
-	.nav-bar {
-		@extend .uppercase_font_style;
-		text-transform: capitalize;
-		font-style: italic;
-		letter-spacing: 0px;
-	}
-	@media only screen and (max-width: 767px) {
-		@include clearfix;
-		position: static;
-		bottom: 0px;
-		right: 0px;
-		margin: 0px;
-		padding: 0px;
-		float: none;
-		display: block;
-		.nav-bar {
-			@include vertical-nav-bar;
-			margin: 0px;
-			padding: 0px;
-			float: none;
-			clear: both;
-			display: block;
-			> li { 
-				border-top: 1px solid #fff;
-				margin: 0px;
-				padding: 0px;
-				float: none;
-				clear: both;
-				display: block;
-			}
-		}
-	}
-}
-.site_infos {
- @include row;    
-}
-#site_by {
+a#site_by {
  background-image: asset-url("gko/logo_gecko_white.png", image); 
 }
-/*-----------------------------------------
-   Home
------------------------------------------ */
-body#home {
-	.row.featured {
-		.content {
-			height: 300px;
-		}
-		.infos {
-			background: #37bef0;
-			background-color: rgba(55, 190, 240, 0.7);
-			position:absolute;
-			bottom: 0;
-			left: 100px;
-			right: 100px;
-			padding: 12px;
-			h1 { 
-				font-size: 22px;
-				color:white;
-			}
-			h3 { 
-				font-size: 16px;
-				color:white;
-			}  
-		}
+#footer {
+	
+	.nav > li > a {
+		font-size: 11px; 
+		@extend .uppercase_font_style;
+		@include link-colors($textColor, $altColor, $altColor);  
 	}
-	.row.services {
+	.nav > li > a:hover {
+		background-color: transparent;
+	}
+}
+/*-----------------------------------------
+   HOME
+----------------------------------------- */ 
+#home-orbit {
+	height: 300px;
+	.infos {
+		background: #37bef0;
+		background-color: rgba(55, 190, 240, 0.7);
+		position:absolute;
+		bottom: 0;
+		left: 100px;
+		right: 100px;
+		padding: 12px;
+	}
+	h1 { 
+		font-size: 22px;
+		color:white;
+	}
+	h3 { 
+		font-size: 16px;
+		color:white;
+	}	
+}
+body#home {
+	.row-fluid.services {
 		margin-top: 14px;
 		margin-bottom: 14px;
-		max-width: 940px;
-		h3 { color:$altColor; font-size: 22px;}
-		.details {
-			span {
-				font-weight: bold;
-				color: $altColor;
-			}
-		}
 	} 
 } 
 .orbit-bullets li {
 background: asset-url("foundation/orbit/bullets_wonb.jpg", image) no-repeat 4px 0;
 }
-
+/*-----------------------------------------
+ GLOBAL EFFECT
+----------------------------------------- */
+a {
+	@include transition(color .5s linear, background-color .5s linear)
+}
+/*-----------------------------------------
+ RESPONSIVE
+----------------------------------------- */
+@import "gko/responsive";
+@media(max-width: 980px) { 
+	.navbar-inner,
+	.container-fluid {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	#sidebar {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	#footer {
+		.nav > li {
+			border-top: 1px solid $containerColor; 
+		} 
+	}
+}

@@ -1,16 +1,13 @@
-//= require gko/externals/jquery.elastidegallery
+//= require gko/jquery.elastidegallery
 
 $(document).ready(function() {
-	$('#featured').orbit({ 
+	$('#orbit').orbit({ 
 		bullets : true, 
 		animation : "horizontal-push",
 		animationSpeed: 800,
 		timer: true });
-  if($('body').hasClass('mobile')) {
+
+	if($('.images:first').length > 0) {
+		Gallery.init($('.images:first'));
 	}
-	else {
-		if($('.images:first').length > 0) {
-			Gallery.init($('.images:first'));
-		}
-	} 
 });
