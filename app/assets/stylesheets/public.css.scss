@@ -5,8 +5,22 @@ $containerColor: #1f1f1f;
 $baseFontFamily: "proxima-nova-1", "proxima-nova-2", "Helvetica Neue", HelveticaNeue, Helvetica, Arial, "Lucida Grande", sans-serif; 
 $textColor: #ccc;
 $bodyBackgroundColor: #121212;
-$linkColor: #ccc;
-$linkColorHover: #fff;
+
+// Links
+$linkColor: #fff;
+$linkColorHover: $altColor;
+$linkColorActive: $altColor;
+// Typography 
+$headingTextColor: $altColor;
+// Navbar
+$navbarBackgroundHighlight: $altColor;
+$navbarBackground: $altColor;
+$navbarText: #fff;
+$navbarLinkColor: #fff;
+$navbarLinkColorHover: #000;
+$navbarLinkColorActive: #000; 
+$navbarButtonBackgroundHighlight: #000; 
+$navbarButtonBackground: #000; 
 
 @import "gko_public_all"; 
 @import "gko/elastislide";
@@ -21,33 +35,14 @@ $linkColorHover: #fff;
 	letter-spacing: 1px; 
 	text-transform: uppercase; 
 }
-
+.next-previous {
+	display:none;
+}
 /*-----------------------------------------
  TYPOGRAPHY 
 ----------------------------------------- */
 h1,h2,h3 {
  font-weight: normal;
-}
-h1 {
-  font-size: $baseFontSize + 12;
-  line-height: $baseLineHeight * 2;
-  small {
-    font-size: $baseFontSize + 4;
-  }
-}
-h2 {
-  line-height: $baseLineHeight * 1.5;
-  font-size: $baseFontSize + 8;
-  small {
-    font-size: $baseFontSize + 1;
-  }
-}
-h3 {
-  line-height: $baseLineHeight * 1.5;
-  font-size: $baseFontSize + 4;
-  small {
-    font-size: $baseFontSize + 1;
-  }
 } 
 h4 {
   line-height: $baseLineHeight;
@@ -57,28 +52,16 @@ h4 {
     @extend .uppercase_font_style;
   }
 } 
-
+h1.page-title a {
+	@include link-colors($linkColor, $linkColorHover, $linkColorActive);
+}
 /*-----------------------------------------
    OVERWRITTE
 ----------------------------------------- */
 .block-grid {
 	h2.entry-title { 
-		color:$altColor; 
 		font-size: 18px;
-		a {
-		 @include link-colors($altColor, $white, $white); 
-		}
 	}
-	.details {
-		span {
-			font-weight: bold;
-			color: $altColor;
-		}
-	}
-}
-
-.image-large-wrapper {
-	background: transparent;
 }
 /*-----------------------------------------
    STRUCTURE
@@ -87,14 +70,6 @@ h4 {
  background: $containerColor;
  padding-top: $baseLineHeight;
  padding-bottom: $baseLineHeight; 
-}
-#sidebar{ 
- a {
-		@include link-colors($white, $altColor, $altColor);
-		&:hover {
-			text-decoration: none;
-		} 
-	} 
 }
 #footer-container {
 	.row-fluid {
@@ -111,29 +86,29 @@ h4 {
 ----------------------------------------- */ 
 .navbar { 
 	margin-bottom: 0;
-	.row-fluid {
-		background-color: $altColor;
-	}
+	border-top:6px solid $white;
 	.header-top {
-		border-top:6px solid $white;
+		
 		.nav {
-			font-size: 10px; 
-			a {
-				text-transform: uppercase;
-				letter-spacing: 1px;
-				@include link-colors($altColor, $grayDark, $grayDark);
-			} 
+			font-size: 10px;
+			background: white; 
+		}
+		.nav > li > a {
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			@include link-colors(#000, $altColor, $altColor);
 		} 
 	}
 	.header-nav {
 		position:relative;
 		nav { 
 			float: right;
+			 margin-right: 56px;
 		}
 		.nav { 
 			@include vertical-nav; 
 			margin-top: 12px;
-			margin-left: 36px;
+		 
 		}
 		.nav > li > a {
 			font-size: 11px; 
@@ -164,12 +139,27 @@ a#site_by {
 	.nav > li > a:hover {
 		background-color: transparent;
 	}
+} 
+/*-----------------------------------------
+   SERVICES
+----------------------------------------- */
+.details {
+	span {
+		font-weight: bold;
+		color: $altColor;
+	}
+} 
+/*-----------------------------------------
+   BLOG
+----------------------------------------- */
+#blog-atom-feed {
+	display: none;
 }
 /*-----------------------------------------
    HOME
 ----------------------------------------- */ 
 #home-orbit {
-	height: 300px;
+	 height: 400px;
 	.infos {
 		background: #37bef0;
 		background-color: rgba(55, 190, 240, 0.7);
@@ -180,12 +170,15 @@ a#site_by {
 		padding: 12px;
 	}
 	h1 { 
+		font-weight: bold;
 		font-size: 22px;
-		color:white;
+		color:#000;
+		line-height: 22px;
 	}
 	h3 { 
 		font-size: 16px;
-		color:white;
+		line-height: 16px;
+		color:#fff;
 	}	
 }
 body#home {
@@ -220,6 +213,11 @@ a {
 	#footer {
 		.nav > li {
 			border-top: 1px solid $containerColor; 
+		}   
+		
+		.nav-pills .active > a,
+		.nav-pills .active > a:hover {
+			 background-color: transparent;
 		} 
 	}
 }

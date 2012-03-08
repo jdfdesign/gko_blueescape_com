@@ -133,6 +133,21 @@ ActiveRecord::Schema.define(:version => 20120220204016) do
     t.datetime "updated_at"
   end
 
+  create_table "dynamic_files", :force => true do |t|
+    t.integer  "site_id"
+    t.string   "type"
+    t.string   "file_type"
+    t.string   "name"
+    t.string   "format"
+    t.string   "handler"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dynamic_files", ["name"], :name => "index_dynamic_files_on_name"
+  add_index "dynamic_files", ["site_id"], :name => "index_dynamic_files_on_site_id"
+
   create_table "feature_translations", :force => true do |t|
     t.integer  "feature_id"
     t.string   "locale"

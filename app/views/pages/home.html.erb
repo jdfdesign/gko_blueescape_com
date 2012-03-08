@@ -16,17 +16,7 @@
     <div class="row-fluid services">
       <div class="span12">
         <%= grid_tag(3) do %>
-          <% @services.each do |record| %>
-            <li class="entry">
-              <%= render_record_thumb(record) %>
-              <div class="entry-infos">
-                <h2 class="entry-title"><%= record.title %></h2>
-                <div class="body"><%= record.body.html_safe if record.body.present? %></div>
-                <%= "<div class='details price'><span>#{t('services.price')}:</span> #{record.price}</div>".html_safe if record.price.present? %>
-                <%= "<div class='details duration'><span>#{t('services.duration')}:</span> #{record.duration.to_s}</div>".html_safe if record.duration.present? %>
-              </div> 
-            </li> 
-          <% end %>
+          <%= render(:partial => "services/record", :collection => @services, :as => :record) %> 
         <% end %>    
       </div>
     </div>

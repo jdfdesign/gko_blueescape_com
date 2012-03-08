@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
 	$('#orbit').orbit({ 
-		bullets : true, 
+		bullets : false, 
 		animation : "horizontal-push",
 		animationSpeed: 800,
 		timer: true });
