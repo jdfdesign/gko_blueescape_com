@@ -1,35 +1,35 @@
 source :rubygems
-source 'http://rubygems.org'
 
 gem 'iconv'
 
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.1.5.rc2'
-  gem 'coffee-rails', '~> 3.1.1'
-  gem 'uglifier', '>= 1.0.3'
+ gem 'sass-rails', '~> 3.2.5'
+ gem 'coffee-rails', '~> 3.2.2'
+ gem 'uglifier', '>= 1.0.3'
 end
+
+prod_location = 'git@github.com:jdfdesign/gko_cms3.git'
+prod_version = "= 0.5.05"
+
 group :production do
-  gem 'gko_core', '= 0.1.52', :git => 'git@github.com:jdfdesign/gko_cms_rails_3.git'
-  gem 'gko_auth', :git => 'git@github.com:jdfdesign/gko_cms_rails_3.git'
-  gem 'gko_images', :git => 'git@github.com:jdfdesign/gko_cms_rails_3.git'
-  gem 'gko_inquiries', :git => 'git@github.com:jdfdesign/gko_cms_rails_3.git'
-  gem "gko_services", :git => 'git@github.com:jdfdesign/gko_cms_rails_3.git' 
-  gem "gko_features", :git => 'git@github.com:jdfdesign/gko_cms_rails_3.git' 
-  gem "gko_categories", :git => 'git@github.com:jdfdesign/gko_cms_rails_3.git' 
-  gem "gko_stickers", :git => 'git@github.com:jdfdesign/gko_cms_rails_3.git' 
-  gem "gko_blog", :git => 'git@github.com:jdfdesign/gko_cms_rails_3.git' 
+  gem 'gko_core', prod_version, :git => prod_location
+  gem 'gko_auth', prod_version, :git => prod_location
+  gem 'gko_images', prod_version, :git => prod_location
+  gem 'gko_inquiries', prod_version, :git => prod_location
+  gem "gko_services", prod_version, :git => prod_location
+  gem "gko_features", prod_version, :git => prod_location
+  gem "gko_categories", prod_version, :git => prod_location 
+  gem "gko_stickers", prod_version, :git => prod_location
+  gem "gko_blog", prod_version, :git => prod_location
 end
 #group :development do
-#  gem "gko_core", :path => File.expand_path('../../gko_cms_rails_3/gko_core', __FILE__)
-#  gem "gko_auth", :path => File.expand_path('../../gko_cms_rails_3/gko_auth', __FILE__)
-#  gem "gko_images", :path => File.expand_path('../../gko_cms_rails_3/gko_images', __FILE__)
-#  gem "gko_inquiries", :path => File.expand_path('../../gko_cms_rails_3/gko_inquiries', __FILE__)
-#  gem "gko_services", :path => File.expand_path('../../gko_cms_rails_3/gko_services', __FILE__)
-#  gem "gko_features", :path => File.expand_path('../../gko_cms_rails_3/gko_features', __FILE__)
-#  gem "gko_categories", :path => File.expand_path('../../gko_cms_rails_3/gko_categories', __FILE__)
-#  gem "gko_stickers", :path => File.expand_path('../../gko_cms_rails_3/gko_stickers', __FILE__) 
-#  gem "gko_blog", :path => File.expand_path('../../gko_cms_rails_3/gko_blog', __FILE__)
-#  gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git', :require =>   'rails_development_boost' 
+#  gem "gko_core", :path => '~/Github/gko_cms3/gko_core'
+#  gem "gko_auth", :path => '~/Github/gko_cms3/gko_auth'
+#  gem "gko_images", :path => '~/Github/gko_cms3/gko_images'
+#  gem "gko_inquiries", :path => '~/Github/gko_cms3/gko_inquiries'
+#  gem "gko_services", :path => '~/Github/gko_cms3/gko_services'
+#  gem "gko_features", :path => '~/Github/gko_cms3/gko_features'
+#  gem "gko_categories", :path => '~/Github/gko_cms3/gko_categories'
+#  gem "gko_stickers", :path => '~/Github/gko_cms3/gko_stickers'
+#  gem "gko_blog", :path => '~/Github/gko_cms3/gko_blog'
 #end    

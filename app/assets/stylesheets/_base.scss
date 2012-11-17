@@ -1,0 +1,159 @@
+
+/*-----------------------------------------
+ GLOBAL EFFECT
+----------------------------------------- */
+a {
+	@include transition("color .5s linear, background-color .5s linear")
+}
+/*-----------------------------------------
+   SHARED STYLES 
+----------------------------------------- */ 
+.uppercase_font_style {
+	line-height: 24px;
+	font-size: 13px;
+	letter-spacing: 1px; 
+	text-transform: uppercase; 
+}
+.next-previous {
+	display:none;
+}
+/*-----------------------------------------
+ TYPOGRAPHY 
+----------------------------------------- */
+h1,h2,h3 {
+ font-weight: normal;
+} 
+h4 {
+  line-height: $baseLineHeight;
+  font-size: $baseFontSize - 2;
+	@extend .uppercase_font_style;
+  small {
+    @extend .uppercase_font_style;
+  }
+} 
+
+/*-----------------------------------------
+   OVERWRITTE
+----------------------------------------- */
+
+/*-----------------------------------------
+   STRUCTURE
+----------------------------------------- */ 
+.container-fluid {
+ 	max-width: 980px;
+ 	@include box-sizing(border-box);
+ 	@include center-block;
+}
+#main-container {
+	padding-bottom: $baseLineHeight;
+	background: $containerColor;
+}
+
+/*-----------------------------------------
+ HEADER
+----------------------------------------- */ 
+.navbar { 
+	margin-bottom: 0;
+	border-top:6px solid $white;
+	.header-top {
+		float: right;
+		.nav {
+			background: $white; 
+		}
+		.nav > li > a {
+			@extend .uppercase_font_style; 
+			color: $gray;
+			font-size: 10px;
+			text-shadow: none;
+			&:hover {
+				color: $black;
+			};
+		} 
+	}
+	.nav-collapse {
+		.nav > li > a {
+			@extend .uppercase_font_style;
+			padding: 5px 0 5px;  
+		}
+	}
+} 
+.navbar {
+	.brand {
+		padding: 0;
+		a {
+			float: left;
+			margin: 20px 0 20px 20px;
+			background: transparent image-url("logo.png") center center no-repeat;
+			background-size: contain;
+			cursor: pointer;
+			text-decoration: none;
+			display: block;
+			@include size(108px,220px);
+			@include hide-text;
+		}
+	}
+}
+
+/*-----------------------------------------
+   FOOTER
+----------------------------------------- */ 
+#footer {
+	.nav > li > a {
+		font-size: 11px; 
+		@extend .uppercase_font_style; 
+	}
+} 
+/*-----------------------------------------
+   COYPRIGHT
+----------------------------------------- */ 
+#site-by {
+	background-image: asset-url("gko/logo_gecko_white.png", image) left center no-repeat; 
+	padding-left: 24px;
+	font-size: 9px;
+	float:right;
+}
+/*-----------------------------------------
+   GRID
+----------------------------------------- */
+.grid > li {
+	.thumbnail {
+		border: none;
+		padding: 0;
+		line-height: $baseLineHeight;
+		@include border-radius(0);
+		.image {
+			text-align: left;
+		}
+		.title { 
+			font-size: 18px;
+			line-height: $baseLineHeight;
+		}
+		.details {
+			span {
+				font-weight: bold;
+				color: $themeColor;
+			}
+		}
+		.links {
+			display: none;
+		}
+	}
+}
+/*-----------------------------------------
+   BLOG
+----------------------------------------- */
+#blog-atom-feed {
+	display: none;
+}
+/*-----------------------------------------
+   HOME
+----------------------------------------- */ 
+body#home {
+	.carousel, .services {
+		margin-top: $baseLineHeight;
+	}
+} 
+/*-----------------------------------------
+ RESPONSIVE
+----------------------------------------- */
+

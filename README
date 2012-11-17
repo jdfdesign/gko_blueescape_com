@@ -1,4 +1,4 @@
-cd ~/developer/workspace/gko_blueescape_com
+cd ~/Github/gko_blueescape_com
 bundle install
 rails s
 

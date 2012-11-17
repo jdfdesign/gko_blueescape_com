@@ -1,13 +1,13 @@
 <% 
-@services = @site.services.with_translations(I18n.locale)
-@features = @site.features.visibles
+@services = site.services.with_translations(I18n.locale)
+@features = site.features.live
 %>
 
 <% content_for :page_content do %>
   <% if @features.any? %>
     <div class="row-fluid">
       <div class="span12" id="home-orbit">
-        <%= render 'shared/features', :features => @features %>
+        <%= render 'shared/carousel', :features => @features %>
       </div>
     </div> 
   <% end %>
@@ -16,7 +16,7 @@
     <div class="row-fluid services">
       <div class="span12">
         <%= grid_tag(3) do %>
-          <%= render(:partial => "services/record", :collection => @services, :as => :record) %> 
+          <%= render @services %> 
         <% end %>    
       </div>
     </div>

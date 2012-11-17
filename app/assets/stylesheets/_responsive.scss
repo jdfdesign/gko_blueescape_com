@@ -1,0 +1,52 @@
+
+@import "twitter/bootstrap/responsive";
+@import "gko/default_responsive";
+@media(max-width: 797px) { 
+	.navbar {
+		.nav-collapse {
+			.nav > li > a { 
+				text-align: center; 
+			}
+		}
+	}	
+}
+@media(min-width: 980px) { 
+	
+	.navbar {
+		.row-fluid {
+			max-width: 980px;
+		 	@include box-sizing(border-box);
+		 	@include center-block;
+		}
+		.nav-collapse {
+			position:relative;
+			nav { 
+				float: right;
+				margin-right: 56px;
+			}
+			.nav { 
+				margin-top: 24px;
+				margin-right: 24px;
+				float: left;
+			}
+			.nav > li { 
+				float: none; 
+			}
+		}
+	}
+
+	#sidebar {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	#footer {
+		.nav > li {
+			border-top: 1px solid $containerColor; 
+		}   
+		
+		.nav-pills .active > a,
+		.nav-pills .active > a:hover {
+			 background-color: transparent;
+		} 
+	}
+}
