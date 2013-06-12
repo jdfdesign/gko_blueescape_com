@@ -1,0 +1,12 @@
+<% collection_row_cache(service) do %> 
+	<%= grid_item_tag_for(service) do %>
+		<%= render_record_thumb(service) %>
+		<%= grid_item_caption_tag do %>
+			<%= render_record_title(service) %>
+			<div class="description"><%= service.body.html_safe if service.body.present? %></div>
+		       <%= "<div class='details details-price'><span>#{t('services.price')}:</span> #{(service.price.present? and service.price.to_f > 0) ? service.price : t(:'price_on_request') }</div>".html_safe %>
+		       <%= "<div class='details details-duration'><span>#{t('services.duration')}:</span> #{service.duration.to_s}</div>".html_safe if service.duration.present? %>
+			<%= render_record_link(service) %>
+		<% end %>
+	<% end %>
+<% end if service %>
