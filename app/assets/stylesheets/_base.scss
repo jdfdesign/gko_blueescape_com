@@ -48,7 +48,14 @@ h4 {
 	padding-bottom: $baseLineHeight;
 	background: $containerColor;
 }
-
+.page-title {
+   padding-top: $baseLineHeight;
+   padding-bottom: $baseLineHeight; 
+}
+.html-text {
+    padding-top: $baseLineHeight;
+    padding-bottom: $baseLineHeight;
+}
 /*-----------------------------------------
  HEADER
 ----------------------------------------- */ 
@@ -96,7 +103,10 @@ h4 {
 
 /*-----------------------------------------
    FOOTER
------------------------------------------ */ 
+----------------------------------------- */
+#footer-container {
+    background-color: #2b2b2b;
+}
 #footer {
 	.nav > li > a {
 		font-size: 11px; 
@@ -106,12 +116,20 @@ h4 {
 /*-----------------------------------------
    COYPRIGHT
 ----------------------------------------- */ 
-#site-by {
-	background-image: asset-url("gko/logo_gecko_white.png", image) left center no-repeat; 
-	padding-left: 24px;
-	font-size: 9px;
-	float:right;
+#copyright-container {
+  font-size: 9px; 
+  padding-top: $baseLineHeight;
+  padding-bottom: $baseLineHeight;
+  a.copyright-author {
+  	background-image: asset-url("gko/logo_gecko_white.png", image) left center no-repeat; 
+  	padding-left: 24px;
+    padding-top: 0;
+    padding-bottom: 0;
+  	font-size: 9px;
+  	float:right;
+  } 
 }
+
 /*-----------------------------------------
    GRID
 ----------------------------------------- */
@@ -142,6 +160,10 @@ h4 {
 /*-----------------------------------------
    BLOG
 ----------------------------------------- */
+#sidebar {
+    padding-top: $baseLineHeight;
+    padding-bottom: $baseLineHeight;
+}
 #blog-atom-feed {
 	display: none;
 }

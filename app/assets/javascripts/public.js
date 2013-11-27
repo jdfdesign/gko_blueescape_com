@@ -1,3 +1,4 @@
+//= require jquery
 //= require gko/gko.galleria
 
 var Site = {
@@ -5,35 +6,24 @@ var Site = {
 	init: function() {
 		Carousel.addTheme();
 		Carousel.init();
-		$('.carousel').each(function (i, el) {
-			if($(el).find('.item').length > 1) {
-				$(el).carousel('pause');
-			} else {
-				$(el).find('.carousel-control').each(function(index) {
-					$(this).css({display: 'none'})
-				});
-			}
-		});
 	}
 }
 
 
 var Carousel = {
 	init: function() {
-		hasCarousel = $(".galleria").length > 0;
-		
-		if(hasCarousel) {
+		if($(".galleria").length > 0) {
 			$(".galleria").galleria({
 				debug: false,
 				autoplay: true,
 				responsive: true,
-				height: .85,
+				height: .55,
 				imageCrop: 'landscape',
 				transition: 'slide',
 				thumbMargin: 10,
 				showCounter: false,
 				showInfo: false,
-				thumbnails: $(".galleria").children().length > 1
+				thumbnails: $(".galleria").children().length > 1 ? 'empty' : false
 			})
 		}
 	},

@@ -6,26 +6,26 @@ group :assets do
  gem 'uglifier', '>= 1.2.6'
 end
 
-prod_location = 'git@github.com:jdfdesign/gko_cms3.git'
-prod_version = "= 0.5.05"
+group :production do
+  git "git@github.com:jdfdesign/gko_cms3.git", :tag => "v0.8.09.rc7" do
+    gem "gko_core"
+    gem "gko_auth"
+    gem "gko_inquiries"
+    gem "gko_services"
+    gem "gko_features"
+    gem "gko_categories"
+    gem "gko_stickers"
+    gem "gko_blog"
+  end
+end
 
-#group :production do
-#  gem 'gko_core', prod_version, :git => prod_location
-#  gem 'gko_auth', prod_version, :git => prod_location
-#  gem 'gko_inquiries', prod_version, :git => prod_location
-#  gem "gko_services", prod_version, :git => prod_location
-#  gem "gko_features", prod_version, :git => prod_location
-#  gem "gko_categories", prod_version, :git => prod_location 
-#  gem "gko_stickers", prod_version, :git => prod_location
-#  gem "gko_blog", prod_version, :git => prod_location
-#end
-group :development do
-  gem "gko_core", :path => '~/Github/gko_cms3/gko_core'
-  gem "gko_auth", :path => '~/Github/gko_cms3/gko_auth'
-  gem "gko_inquiries", :path => '~/Github/gko_cms3/gko_inquiries'
-  gem "gko_services", :path => '~/Github/gko_cms3/gko_services'
-  gem "gko_features", :path => '~/Github/gko_cms3/gko_features'
-  gem "gko_categories", :path => '~/Github/gko_cms3/gko_categories'
-  gem "gko_stickers", :path => '~/Github/gko_cms3/gko_stickers'
-  gem "gko_blog", :path => '~/Github/gko_cms3/gko_blog'
-end    
+#group :development do
+#  gem "gko_core", :path => '~/Github/gko_cms3/gko_core'
+#  gem "gko_auth", :path => '~/Github/gko_cms3/gko_auth'
+#  gem "gko_inquiries", :path => '~/Github/gko_cms3/gko_inquiries'
+#  gem "gko_services", :path => '~/Github/gko_cms3/gko_services'
+#  gem "gko_features", :path => '~/Github/gko_cms3/gko_features'
+#  gem "gko_categories", :path => '~/Github/gko_cms3/gko_categories'
+#  gem "gko_stickers", :path => '~/Github/gko_cms3/gko_stickers'
+#  gem "gko_blog", :path => '~/Github/gko_cms3/gko_blog'
+#end    
