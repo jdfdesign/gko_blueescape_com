@@ -22,8 +22,8 @@ var Carousel = {
 				transition: 'slide',
 				thumbMargin: 10,
 				showCounter: false,
-				showInfo: false,
-				thumbnails: $(".galleria").children().length > 1 ? 'empty' : false
+				showInfo: false//,
+				//thumbnails: $(".galleria").children().length > 1 ? 'empty' : false
 			})
 		}
 	},

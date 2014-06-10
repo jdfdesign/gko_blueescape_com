@@ -2,6 +2,10 @@
 @import "gko/default_responsive";
 
 @media(max-width: 797px) { 
+  .navbar .brand a {
+    width: 180px;
+    margin: 0;
+  }
 	.navbar {
 		.nav-collapse {
 			.nav > li > a { 
